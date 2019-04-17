@@ -1,0 +1,12 @@
+Assignment
+Subject :- File Structure
+Sem/Sec :- 6th / A & B
+Last date to submit :- 30th April 2019
+Implement these programs using C++ or JAVA. Take the printout of the executed program and submit it after properly formatting it.
+1)	Using a set of keys, such as the names of California towns, do the following
+a)	Write a program for loading the keys into different hash files using different bucket sizes of 1, 2 and 5 respectively and a packing density of 0.8. Use progressive overflow for handling collisions.
+b)	Have your program maintain statistics on the average search length, the maximum search length and percentage of records that are overflow records.
+
+2)	Create a B-Tree index for a student record file with student identifier (USN) as a key. Actual student data file can be in basic structure of variable length record where fields and records are separated by delimiters. One student data comprises of student name, Student identifier, student phone no, student address_city. 
+
+3)	Write a program to implement a k-way merge using concept of selection tree for 10 files. Program should also include logic to sort those 10 files first. Make sure that files contain data beforehand (need not to enter through program)
