@@ -10,3 +10,5 @@ b)	Have your program maintain statistics on the average search length, the maxim
 2)	Create a B-Tree index for a student record file with student identifier (USN) as a key. Actual student data file can be in basic structure of variable length record where fields and records are separated by delimiters. One student data comprises of student name, Student identifier, student phone no, student address_city. 
 
 3)	Write a program to implement a k-way merge using concept of selection tree for 10 files. Program should also include logic to sort those 10 files first. Make sure that files contain data beforehand (need not to enter through program)
+
+You may pick any one.
