@@ -18,9 +18,9 @@ void kMerge(vector< string > ips[], ofstream &op, int no_of_files){
     cout << "Starting tree construction\n";
     i = n - 1;
     int beg = i;
-    int end = no_of_files + n - 1;
+    int end = 2*n - 1;
     while(i != 0){
-        if(i + 1 == end || tree[i].first <= tree[i+1].first){
+        if((tree[i+1].first).empty() || tree[i].first <= tree[i+1].first){
             tree[(int)(ceil(i/2.0) - 1)].first = tree[i].first;
             tree[(int)(ceil(i/2.0) - 1)].second = tree[i].second;
         } else {
@@ -38,7 +38,7 @@ void kMerge(vector< string > ips[], ofstream &op, int no_of_files){
     cout << "Running algorithm...\n";
     string lastop = "";
     while(! (tree[0].first).empty()){
-        if(!(lastop == tree[0].first))
+        if(! (lastop == tree[0].first))
             op << tree[0].first << "\n";
         lastop = tree[0].first;
         int leaf = n - 1 + tree[0].second;
@@ -48,10 +48,11 @@ void kMerge(vector< string > ips[], ofstream &op, int no_of_files){
             if((tree[leaf].first).empty() && (tree[leaf + 1].first).empty()){
                 tree[(int)(ceil(leaf/2.0) - 1)].first = "\0";
             }
-            else if((tree[leaf+1].first).empty() || tree[leaf].first <= tree[leaf + 1].first){
+            else if((tree[leaf+1].first).empty() || (!(tree[leaf].first).empty() && tree[leaf].first <= tree[leaf + 1].first)){
                 tree[(int)(ceil(leaf/2.0) - 1)].first = tree[leaf].first;
                 tree[(int)(ceil(leaf/2.0) - 1)].second = tree[leaf].second;
-            } else{
+            }
+            else{
                 tree[(int)(ceil(leaf/2.0) - 1)].first = tree[leaf + 1].first;
                 tree[(int)(ceil(leaf/2.0) - 1)].second = tree[leaf + 1].second;
             }
