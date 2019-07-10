@@ -1,2 +1,2 @@
 # ScratchPad
-Version controlling assignment programs and other random code.
+Version controlling assignment programs, competitive problems, and other random code.
