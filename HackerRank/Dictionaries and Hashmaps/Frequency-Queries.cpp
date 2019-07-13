@@ -10,7 +10,7 @@ vector<int> freqQuery(vector<vector<int>> queries) {
 
 
     /* Unbelievably, Test case #10 fails without reserving
-    space for the maps. The constaints given specify 10^9,
+    space for the maps. The constraints given specify 10^9,
     but HackerRank only allowed me to reserve 10^7 for each
     map.
     */
