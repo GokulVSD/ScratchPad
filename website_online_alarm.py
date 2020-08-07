@@ -3,7 +3,7 @@ import time
 
 # A simple script that beeps or sounds an alarm when a URL or website responds to a request or is online
 
-print("\n\nGokul's \"Is the website is online yet?\" alarm\n")
+print("\n\nGokul's \"Is the website online yet?\" alarm\n")
 
 url = input("Enter a website to ping (with http / https tag): ")
 
