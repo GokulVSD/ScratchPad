@@ -7,10 +7,9 @@ print("\n\nGokul's \"Is the website is online yet?\" alarm\n")
 
 url = input("Enter a website to ping (with http / https tag): ")
 
-notLoading = True
 counter = 1
 
-while notLoading:
+while True:
 
     try:
         print("Attempting to load: ", url, "\tAttempt Counter: ", counter)
@@ -19,7 +18,9 @@ while notLoading:
 
     except:
         print("Website is offline")
-        counter = 0
+        print("Resetting attempt counter, ctrl + c to stop")
+        counter = 1
+        time.sleep(2)
 
     if counter >= 5:
         print("Website is online! ctrl + c to stop")
