@@ -1,4 +1,4 @@
-// Finished upto https://golang.org/doc/tutorial/create-module
+// https://golang.org/doc/tutorial/getting-started
 
 package main
 
