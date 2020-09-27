@@ -2,7 +2,7 @@ import urllib.request as req
 import ssl
 import time
 
-# A simple script that beeps or sounds an alarm when a URL or website responds to a request or is online
+# A simple script that beeps or sounds an alarm when a URL or website's HTML contents change (if online)
 
 print("\n\nGokul's \"Has the website changed?\" alarm\n")
 
