@@ -32,8 +32,6 @@ while True:
             print("Website seems to be online")
         else:
             new = req.urlopen(url, context=context).read()
-            print(new)
-            print(res)
             if new == res:
                 print("No change")
             else:
