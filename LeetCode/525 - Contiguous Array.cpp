@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/contiguous-array/
 
-// It's basically longest continuous subarray that sums to k, where k=0 if 0 is replaced with -1.
+// It's basically longest continuous subarray that sums to k, where k=0, if 0 is replaced with -1.
 
 class Solution {
 public:
