@@ -191,8 +191,213 @@ func sliceTest() {
 		fmt.Println("nil!")
 	}
 
-	https://tour.golang.org/moretypes/13
+
+	// Slices can be created with the built-in make function; this is how you create dynamically-sized arrays.
+	// The make function allocates a zeroed array and returns a slice that refers to that array:
+	// a := make([]int, 5)  // len(a)=5
+	// To specify a capacity, pass a third argument to make:
+	// b := make([]int, 0, 5) // len(b)=0, cap(b)=5
+
+	// Slices can contain any type, including other slices.
+
+	board := [][]string{
+		[]string{"_", "_"},
+		[]string{"_", "_"},
+	}
+
+	board[0][0] = "X"
+	board[0][1] = "O"
+	board[1][0] = "X"
+	board[1][1] = "O"
+
+	for i := 0; i < len(board); i++ {
+		fmt.Printf("%s\n", strings.Join(board[i], " "))
+	}
+	// prints:
+	// X O
+	// X O
+
+
+
+	// Appending to a slice:
+	// func append(s []T, value/s ...T) []T
+	// The first parameter s of append is a slice of type T, and the rest are T values to append to the slice.
+
+	// The resulting value of append is a slice containing all the elements of the original slice plus the provided values.
+
+	// If the backing array of s is too small to fit all the given values a bigger array will be allocated. 
+	// The returned slice will point to the newly allocated array.
+
+	var s []int
+	s = append(s, 0) // len=1 cap=1, prints [0]
+	s = append(s, 1, 2, 3, 4) // len=4 cap=6 [0 1 2 3 4]
+
+
+	// The range form of the for loop iterates over a slice or map.
+	// When ranging over a slice, two values are returned for each iteration. 
+	// The first is the index, and the second is a copy of the element at that index.
+
+
+	var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
+
+	for i, v := range pow {
+		fmt.Printf("2**%d = %d\n", i, v)
+	} // prints 2**0 = 1 ...
+
+	// You can skip the index or value by assigning to _.
+	// for i, _ := range pow
+	// for _, value := range pow
+	// If you only want the index, you can omit the second variable.
+	// for i := range pow
+
 }
+
+// Slice excercise
+package main
+
+import "golang.org/x/tour/pic"
+
+func Pic(dx, dy int) [][]uint8 {
+	var x [][]uint8
+	for i := 0; i < dy; i++ {
+		var y []uint8
+		for j := 0; j < dx; j++ {
+			y = append(y, uint8(i^j))
+		}
+		x = append(x, y)
+	} 
+	return x
+}
+
+func main() {
+	pic.Show(Pic)
+}
+
+
+
+// A map maps keys to values. The zero value of a map is nil. A nil map has no keys, nor can keys be added.
+// The make function returns a map of the given type, initialized and ready for use.
+
+type Vertex struct {
+	Lat, Long float64
+}
+
+var m map[string]Vertex
+
+func mapTest(){
+	m = make(map[string]Vertex)
+	m["Bell Labs"] = Vertex{
+		40.68433, -74.39967,
+	}
+	fmt.Println(m["Bell Labs"]) // prints {40.68433 -74.39967}
+
+	// Map literals are like struct literals, but the keys are required.
+	var m = map[string]Vertex{
+		"Bell Labs": Vertex{
+			40.68433, -74.39967,
+		},
+		"Google": Vertex{
+			37.42202, -122.08408,
+		},
+	} // you can omit `Vertex` inside since it is a type name, like "Google": {37.42202, -122.08408,}
+
+	fmt.Println(m) // prints map[Bell Labs:{40.68433 -74.39967} Google:{37.42202 -122.08408}]
+
+	// delete(m, key) to delete a key from a map m
+
+	// Test that a key is present with a two-value assignment:
+	// elem, ok := m[key]
+	// If key is in m, ok is true. If not, ok is false.
+	// If key is not in the map, then elem is the zero value for the map's element type.
+
+}
+
+
+// Maps excercise
+package main
+
+import (
+	"golang.org/x/tour/wc"
+	"strings"
+)
+
+func WordCount(s string) map[string]int {
+	m := make(map[string]int)
+	for _, w := range strings.Fields(s) {
+		m[w]++
+	}
+	return m
+}
+
+func main() {
+	wc.Test(WordCount)
+}
+
+
+
+// Functions are values too. They can be passed around just like other values.
+// Function values may be used as function arguments and return values.
+func compute(fn func(float64, float64) float64) float64 {
+	return fn(3, 4)
+}
+
+func funcValTest(){
+	hypot := func(x, y float64) float64 {
+		return math.Sqrt(x*x + y*y)
+	}
+	fmt.Println(compute(hypot)) // prints 5
+	fmt.Println(compute(math.Pow)) // prints 81 (which is 3**4)
+}
+
+// Function closures:
+/*
+Go functions may be closures.
+A closure is a function value that references variables from outside its body.
+The function may access and assign to the referenced variables;
+in this sense the function is "bound" to the variables.
+
+For example, the adder function returns a closure. Each closure is bound to its own sum variable.
+*/
+func adder() func(int) int {
+	sum := 0
+	return func(x int) int {
+		sum += x
+		return sum
+	}
+}
+
+func funcClosureTest() {
+	pos, neg := adder(), adder()
+	for i := 1; i < 5; i++ {
+		fmt.Println(pos(i), neg(-i)
+	} // prints 1 -1
+	  // 		3 -3 ... till 10 -10
+}
+
+
+
+// Function Closure exercise
+package main
+
+import "fmt"
+
+func fibonacci() func() int {
+	x, y, z := 1, 0, 0
+	return func() int {
+		z = x + y
+		x = y
+		y = z
+		return x
+	}
+}
+
+func main() {
+	f := fibonacci()
+	for i := 0; i < 10; i++ {
+		fmt.Println(f())
+	}
+}
+
 
 
 
