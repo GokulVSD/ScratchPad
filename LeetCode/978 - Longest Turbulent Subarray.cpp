@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/longest-turbulent-subarray/
 
-// Faster than 90% of all solutions submitted for the problem
+// Faster than 90%
 
 class Solution {
 public:

@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/design-hashset/
 
-// Seriously, needed stricter constraints. Faster than 99.5% of solutions.
+// Seriously, needed stricter constraints. Faster than 99.5%
 
 class MyHashSet {
 public:

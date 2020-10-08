@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/linked-list-random-node/
 
-// This was way too easy. It's the fastest solution in C++ according to LeetCode.
+// This was way too easy. Faster than 100%
 
 class Solution {
 public:
