@@ -149,8 +149,6 @@ func interfaceTest1() {
 	// Calling a method on an interface value executes the method of the same name on its underlying `type`.
 	a = f
 	describe(a) // prints (-1.4142135623730951, main.MyFloat)
-
-
 }
 
 
@@ -387,7 +385,7 @@ import (
 func readerTest() {
 	r := strings.NewReader("Hello")
 
-	b := make([]byte, 8)
+	b := make([]byte, 4)
 	for {
 		n, err := r.Read(b)
 		fmt.Printf("n = %v err = %v b = %v\n", n, err, b)
