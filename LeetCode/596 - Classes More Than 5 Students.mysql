@@ -1,0 +1,7 @@
+# https://leetcode.com/problems/classes-more-than-5-students/submissions/
+
+# Pretty simple
+
+select distinct class 
+from courses as c1 
+where (select count(distinct student) from courses as c2 where c1.class = c2.class) >= 5;
